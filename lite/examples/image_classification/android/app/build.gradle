@@ -58,6 +58,7 @@ android {
     androidResources {
         noCompress 'tflite'
     }
+        namespace 'org.tensorflow.lite.examples.imageclassification' // Replace with your desired namespace
 }
 
 // import DownloadModels task
