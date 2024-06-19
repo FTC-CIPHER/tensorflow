@@ -38,10 +38,16 @@ task downloadModelFile2(type: Download) {
     overwrite false
 }
 
+task downloadRakModelFile(type: Download) {
+    src 'https://drive.google.com/uc?export=download&id=1T5MnsDZ1hw3fSvSjXSJkLXpP8XDZshtB'
+    dest project.ext.ASSET_DIR + '/rak.tflite'
+    overwrite false
+}
+
 task copyTestModel(type: Copy, dependsOn: downloadModelFile) {
     from project.ext.ASSET_DIR + '/mobilenetv1.tflite'
     into project.ext.TEST_ASSETS_DIR
 }
 
-preBuild.dependsOn downloadModelFile, downloadModelFile0, downloadModelFile1, downloadModelFile2,
+preBuild.dependsOn downloadModelFile, downloadModelFile0, downloadModelFile1, downloadModelFile2, downloadRakModelFile,
         copyTestModel
